@@ -8,6 +8,11 @@ function App() {
           const [title, setTitle] = useState('Wall-E');
 
           const [info, setInfo] = useState('');
+
+       function pokazalert(event) {
+          alert(title);
+        }
+        
     function handleChange(event) {
         //console.log(event.target.value);
         setTitle(event.target.value);
@@ -28,6 +33,8 @@ function App() {
        }else
         setInfo('');
           
+       
+       
         
     }
 
@@ -38,6 +45,7 @@ function App() {
             <h2>{info}</h2>
         
             <input type="text" value={title} onChange={handleChange}/>
+            <button type="submit" onClick={pokazalert}>Pokaz tytul filmu</button>
         </div>
     
     
