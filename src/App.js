@@ -1,7 +1,7 @@
 
 import './App.css';
 import {useState} from "react";
-
+import "milligram";
 function App() {
   
         // let title = 'Wall-E';
@@ -64,7 +64,7 @@ function App() {
         message='';
 
     return (
-        <div>
+        <div className="container"> 
             <h1>My favourite movies to watch</h1>
             <h2>My favourite movie for today is {title}</h2>
             <h3>Title</h3>
