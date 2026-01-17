@@ -2,8 +2,12 @@
 import './App.css';
 import {useState} from "react";
 import "milligram";
+import MovieForm from "./MovieForm";
+import MoviesList from "./MovieList";
+
 function App() {
   
+           const [showForm, setshowForm] = useState('0');
 
           const [title, setTitle] = useState('');
           const [year, SetYear] = useState('');
@@ -28,7 +32,7 @@ function App() {
           else
           {
             const newMovie = [
-                          {title: title,rok:year}
+                          {title: title,year:year}
                           ];
 
             setMovies([...movies, ...newMovie]);
@@ -42,7 +46,7 @@ function App() {
           }
       
       }
-        
+
     function handleChange(event) {
         //console.log(event.target.value);
         setTitle(event.target.value);
@@ -68,34 +72,27 @@ function App() {
         message='';
 
     return (
-        <div className="container"> 
-            <h1>My favourite movies to watch</h1>
 
-            <h3>Title</h3>
-            <ul>
-                {movies.map((movie) => <li key={movie.title}>{movie.title} ({movie.rok})</li>)}
-            </ul>
+        <div className="container">
 
-           
-          <h2>Add movie </h2>
+             <MoviesList movies={movies}/>
 
-            <label>Tytul </label>
+            <button  onClick={(event=>setshowForm(1))} >Dodaj film</button>
 
-          {
-            title.length > 0 && <div>{message}</div>
+                   {showForm === 1 && (
+  <MovieForm
+    onMovieSubmit={(movie) => {
+      setMovies([...movies, movie]);
+      setshowForm(0);
+    }}
+  />
+)}
 
-          }
-
-            <input type="text" value={title} onChange={handleChange} />
-
-            <label>Rok</label>
-
-            <input type="number"  value={year}  onChange={(event=>SetYear(event.target.value))} />
-
-            <button type="submit" onClick={dodajfilm}>Dodaj film</button>
         </div>
     
-    
+
+
+
         ); 
 }
 
